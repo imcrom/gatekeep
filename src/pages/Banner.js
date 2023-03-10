@@ -45,7 +45,7 @@ export const Banner = () => {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({'username': username , 'address': address})
+          body: JSON.stringify({'username': username , 'wall_address': address})
         });
         const data = await response.json();
         console.log(data);
