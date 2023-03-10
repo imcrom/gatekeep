@@ -36,7 +36,7 @@ export const Banner = () => {
 
     async function request() {
       try {
-        const response = await fetch("http://localhost:5000/api", {
+        const response = await fetch("https://monkfish-app-y8zdr.ondigitalocean.app/api", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -44,6 +44,13 @@ export const Banner = () => {
           body: JSON.stringify({'username': username , 'address': address})
         });
         const data = await response.json();
+        console.log(data);
+        if (data.message === 'User exists') {
+          window.alert('User is already registered')
+        }else if(data.message === 'User added to list'){
+          window.alert('You can now use the bot.')
+          
+        }
       } catch (error) {
         console.error(error);
       }
