@@ -197,9 +197,9 @@ export const Banner = () => {
                       aria-describedby="modal-modal-description"
                     >
                       <Box sx={style}>
-                        <TextField id="filled-basic" label="Enter Telegram Username" variant="filled" className='w-full'  InputLabelProps={{style: { color: '#efefef' }}} />
+                        <TextField value={username} onChange={handleUsernameChange}  id="filled-basic" label="Enter Telegram Username" variant="filled" className='w-full'  InputLabelProps={{style: { color: '#efefef' }}} />
                         <div className='w-full m-auto border-2 border-[#38BCF9] mt-4'>
-                            <Button value={username} onChange={handleUsernameChange} onClick={request} variant='outlined' color='secondary' sx={{color: '#efefef', width: '100%', height:'100%', padding: '4px'}}>
+                            <Button onClick={request} variant='outlined' color='secondary' sx={{color: '#efefef', width: '100%', height:'100%', padding: '4px'}}>
                               <a className='font-fredoka' variant='p' color='#38BCF9' >
                                   SUBMIT
                               </a>
