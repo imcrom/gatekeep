@@ -33,6 +33,10 @@ export const Banner = () => {
     // test
     const tokenAddress = '0x2f25ea915811f23be33e0910a2dc8ff43e4ce14a'
 
+      const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
+      };
+
 
     async function request() {
       try {
@@ -49,7 +53,7 @@ export const Banner = () => {
           window.alert('User is already registered')
         }else if(data.message === 'User added to list'){
           window.alert('You can now use the bot.')
-          
+
         }
       } catch (error) {
         console.error(error);
@@ -195,7 +199,7 @@ export const Banner = () => {
                       <Box sx={style}>
                         <TextField id="filled-basic" label="Enter Telegram Username" variant="filled" className='w-full'  InputLabelProps={{style: { color: '#efefef' }}} />
                         <div className='w-full m-auto border-2 border-[#38BCF9] mt-4'>
-                            <Button onClick={request} variant='outlined' color='secondary' sx={{color: '#efefef', width: '100%', height:'100%', padding: '4px'}}>
+                            <Button value={username} onChange={handleUsernameChange} onClick={request} variant='outlined' color='secondary' sx={{color: '#efefef', width: '100%', height:'100%', padding: '4px'}}>
                               <a className='font-fredoka' variant='p' color='#38BCF9' >
                                   SUBMIT
                               </a>
