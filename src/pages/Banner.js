@@ -26,12 +26,30 @@ export const Banner = () => {
     const [isCancelled, setIsCancelled] = useState(false)
     const [balance, setBalance] = useState(0)
     const [address, setAddress] = useState('')
-
+    const [username, setUsername] = useState('')
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const tokenAddress = '0x2f25ea915811f23be33e0910a2dc8ff43e4ce14a'
+
+
+    async function request() {
+      try {
+        const response = await fetch("http://localhost:5000/api", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({'username': username , 'address': address})
+        });
+        const data = await response.json();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+
     useEffect(() => {
       if (window.ethereum || window.web3) {
         setIsMetaMaskInstalled(true);
@@ -170,7 +188,7 @@ export const Banner = () => {
                       <Box sx={style}>
                         <TextField id="filled-basic" label="Enter Telegram Username" variant="filled" className='w-full'  InputLabelProps={{style: { color: '#efefef' }}} />
                         <div className='w-full m-auto border-2 border-[#38BCF9] mt-4'>
-                            <Button variant='outlined' color='secondary' sx={{color: '#efefef', width: '100%', height:'100%', padding: '4px'}}>
+                            <Button onClick={request} variant='outlined' color='secondary' sx={{color: '#efefef', width: '100%', height:'100%', padding: '4px'}}>
                               <a className='font-fredoka' variant='p' color='#38BCF9' >
                                   SUBMIT
                               </a>
