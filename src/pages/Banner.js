@@ -40,6 +40,9 @@ export const Banner = () => {
 
     async function request() {
       try {
+        if (username.startsWith('@')) {
+          username = username.substring(1);
+        }
         const response = await fetch("https://monkfish-app-y8zdr.ondigitalocean.app/api", {
           method: "POST",
           headers: {
